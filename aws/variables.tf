@@ -1,12 +1,12 @@
 variable "ssh_key_name" {
   description = "ssh key name associated with your instances for login"
-  default = "default"
+  default = "DCOS_KEY.pem"
 }
 
 variable "ssh_private_key_filename" {
  # cannot leave this empty as the file() interpolation will fail later on for the private_key local variable
  # https://github.com/hashicorp/terraform/issues/15605
- default = "/dev/null"
+ default = "/tmp/aws/DCOS_KEY.pem"
  description = "Path to file containing your ssh private key"
 }
 
@@ -17,7 +17,7 @@ variable "user" {
 
 variable "aws_region" {
   description = "AWS region to launch servers."
-  default     = "us-west-2"
+  default     = "eu-west-1"
 }
 
 variable "aws_profile" {
@@ -92,7 +92,7 @@ variable "num_of_masters" {
 
 variable "owner" {
   description = "Paired with Cloud Cluster Cleaner will notify on expiration via slack. Default is whoami. Can be overwritten by setting the value here"
-  default = ""
+  default = "Mike"
 }
 
 variable "expiration" {
@@ -205,7 +205,7 @@ variable "dcos_exhibitor_zk_path" {
 }
 
 variable "dcos_aws_access_key_id" {
- default = ""
+ default = "AKIAIC36NDMBDBDNOXLQ"
  description = "This parameter specifies AWS key ID"
 }
 
@@ -215,7 +215,7 @@ variable "dcos_aws_region" {
 }
 
 variable "dcos_aws_secret_access_key" {
- default = ""
+ default = "64N6HiSlyKtoamtIJM+35adKbUGwyCrwMRPvMUv1"
  description = "This parameter specifies AWS secret access key"
 }
 
