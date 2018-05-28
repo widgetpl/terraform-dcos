@@ -122,3 +122,7 @@ resource "aws_instance" "agent" {
 output "Private Agent Public IPs" {
   value = ["${aws_instance.agent.*.public_ip}"]
 }
+
+output "Private Agent Private IPs" {
+  value = ["${aws_instance.agent.*.private_ip}"]
+}

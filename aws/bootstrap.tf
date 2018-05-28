@@ -267,3 +267,7 @@ resource "aws_instance" "bootstrap" {
 output "Bootstrap Host Public IP" {
   value = "${aws_instance.bootstrap.public_ip}"
 }
+
+output "Bootstrap Host Private IP" {
+  value = "${aws_instance.bootstrap.private_ip}"
+}

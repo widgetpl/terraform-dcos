@@ -169,3 +169,7 @@ output "Public Agent ELB Public IP" {
 output "Public Agent Public IPs" {
   value = ["${aws_instance.public-agent.*.public_ip}"]
 }
+
+output "Public Agent Private IPs" {
+  value = ["${aws_instance.public-agent.*.private_ip}"]
+}

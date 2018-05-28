@@ -245,3 +245,7 @@ output "Master ELB Public IP" {
 output "Master Public IPs" {
   value = ["${aws_instance.master.*.public_ip}"]
 }
+
+output "Master Private IPs" {
+  value = ["${aws_instance.master.*.private_ip}"]
+}
