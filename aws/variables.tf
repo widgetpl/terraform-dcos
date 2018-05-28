@@ -1,18 +1,18 @@
 variable "ssh_key_name" {
   description = "ssh key name associated with your instances for login"
-  default = "DCOS_KEY.pem"
+  default = "DCOS_KEY"
 }
 
 variable "ssh_private_key_filename" {
  # cannot leave this empty as the file() interpolation will fail later on for the private_key local variable
  # https://github.com/hashicorp/terraform/issues/15605
- default = "/tmp/aws/DCOS_KEY.pem"
+ default = "./DCOS_KEY.pem"
  description = "Path to file containing your ssh private key"
 }
 
 variable "user" {
   description = "Username of the OS"
-  default = "core"
+  default = "centos"
 }
 
 variable "aws_region" {
@@ -31,7 +31,7 @@ variable "admin_cidr" {
 }
 
 variable "os" {
-  default = "coreos_1235.9.0"
+  default = "centos_7.4"
   description = "Recommended DC/OS OSs are centos_7.2, coreos_1235.9.0, coreos_835.13.0"
 }
 
@@ -92,7 +92,7 @@ variable "num_of_masters" {
 
 variable "owner" {
   description = "Paired with Cloud Cluster Cleaner will notify on expiration via slack. Default is whoami. Can be overwritten by setting the value here"
-  default = "Mike"
+  default = "mike"
 }
 
 variable "expiration" {
@@ -205,7 +205,7 @@ variable "dcos_exhibitor_zk_path" {
 }
 
 variable "dcos_aws_access_key_id" {
- default = "AKIAIC36NDMBDBDNOXLQ"
+ default = ""
  description = "This parameter specifies AWS key ID"
 }
 
@@ -215,7 +215,7 @@ variable "dcos_aws_region" {
 }
 
 variable "dcos_aws_secret_access_key" {
- default = "64N6HiSlyKtoamtIJM+35adKbUGwyCrwMRPvMUv1"
+ default = ""
  description = "This parameter specifies AWS secret access key"
 }
 

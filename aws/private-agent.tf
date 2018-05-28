@@ -22,11 +22,12 @@ resource "aws_instance" "agent" {
   ebs_optimized = "true"
 
   tags {
-   owner = "${coalesce(var.owner, data.external.whoami.result["owner"])}"
-   expiration = "${var.expiration}"
-   Name =  "${data.template_file.cluster-name.rendered}-pvtagt-${count.index + 1}"
-   cluster = "${data.template_file.cluster-name.rendered}"
-   KubernetesCluster = "${var.kubernetes_cluster}"
+    owner = "${coalesce(var.owner, data.external.whoami.result["owner"])}"
+    expiration = "${var.expiration}"
+    Name =  "${data.template_file.cluster-name.rendered}-pvtagt-${count.index + 1}"
+    cluster = "${data.template_file.cluster-name.rendered}"
+    KubernetesCluster = "${var.kubernetes_cluster}"
+    BDF-DCOS-POC-class = "private-agent"
   }
 
   # Lookup the correct AMI based on the region
@@ -45,20 +46,20 @@ resource "aws_instance" "agent" {
   subnet_id = "${aws_subnet.private.id}"
 
   # OS init script
-  provisioner "file" {
-   content = "${module.aws-tested-oses.os-setup}"
-   destination = "/tmp/os-setup.sh"
-   }
+//  provisioner "file" {
+//   content = "${module.aws-tested-oses.os-setup}"
+//   destination = "/tmp/os-setup.sh"
+//   }
 
  # We run a remote provisioner on the instance after creating it.
   # In this case, we just install nginx and start it. By default,
   # this should be on port 80
-    provisioner "remote-exec" {
-    inline = [
-      "sudo chmod +x /tmp/os-setup.sh",
-      "sudo bash /tmp/os-setup.sh",
-    ]
-  }
+//    provisioner "remote-exec" {
+//    inline = [
+//      "sudo chmod +x /tmp/os-setup.sh",
+//      "sudo bash /tmp/os-setup.sh",
+//    ]
+//  }
 
   lifecycle {
     ignore_changes = ["tags.Name"]
