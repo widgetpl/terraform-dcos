@@ -292,9 +292,6 @@ resource "aws_security_group" "public_slave" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
-    KubernetesCluster = "${var.kubernetes_cluster}"
-  }
 }
 
 # A security group for private slave so it is accessible internally
@@ -319,9 +316,6 @@ resource "aws_security_group" "private_slave" {
    cidr_blocks = ["${aws_vpc.default.cidr_block}"]
    }
 
-  tags {
-    KubernetesCluster = "${var.kubernetes_cluster}"
-  }
 }
 
 # Provide tested AMI and user from listed region startup commands
